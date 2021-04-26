@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import {
     IChangeCryptoSettings,
     IGenericHttpReponse,
-    IGetCustomnerListPerStatusResponse,
+    IGetCustomerListPerStatusResponse,
     ISaveCryptoSellingPrice,
     IUpdateCountryFeatureStatus,
     IUpdateCountryStatus,
@@ -48,7 +48,7 @@ export class AdminService {
         return this.httpClient.put<IGenericHttpReponse>('endpoint', payload);
     }
 
-    getCustomerListPerStatus = (params: HttpParams): Observable<IGetCustomnerListPerStatusResponse> => {
-        return this.httpClient.get<IGetCustomnerListPerStatusResponse>('endpoint', { params });
+    getCustomerListPerStatus = (params: HttpParams): Observable<IGetCustomerListPerStatusResponse> => {
+        return this.httpClient.get<IGetCustomerListPerStatusResponse>('endpoint', { params });
     }
 }

@@ -58,8 +58,6 @@ export interface IUpdateCountryStatus {
     status: String;
 }
 
-export interface IGetCustomnerListPerStatusResponse extends IGenericHttpReponse {
-    data: {
-
-    }[];
+export interface IGetCustomerListPerStatusResponse extends IGenericHttpReponse {
+    data: {}[];
 }
