@@ -3,8 +3,16 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import {
     IChangeCryptoSettings,
+    ICreateCustomerFiatWallet,
+    ICreateCustomerFiatWalletResponse,
+    IDeleteTransaction,
     IGenericHttpReponse,
+    IGetCustomerDetailsResponse,
     IGetCustomerListPerStatusResponse,
+    IManualBuy,
+    IManualDeposit,
+    IManualTransactionResponse,
+    IRevertManualTransaction,
     ISaveCryptoSellingPrice,
     IUpdateCountryFeatureStatus,
     IUpdateCountryStatus,
@@ -40,6 +48,10 @@ export class AdminService {
         return this.httpClient.put<IGenericHttpReponse>('endpoint', payload);
     }
 
+    createCustomerFiatWallet = (payload: ICreateCustomerFiatWallet): Observable<ICreateCustomerFiatWalletResponse> => {
+        return this.httpClient.post<ICreateCustomerFiatWalletResponse>('endpoint', payload);
+    }
+
     updateCountryFeatureStatus = (payload: IUpdateCountryFeatureStatus): Observable<IGenericHttpReponse> => {
         return this.httpClient.put<IGenericHttpReponse>('endpoint', payload);
     }
@@ -50,5 +62,25 @@ export class AdminService {
 
     getCustomerListPerStatus = (params: HttpParams): Observable<IGetCustomerListPerStatusResponse> => {
         return this.httpClient.get<IGetCustomerListPerStatusResponse>('endpoint', { params });
+    }
+
+    getCustomerDetails = (params: HttpParams): Observable<IGetCustomerDetailsResponse> => {
+        return this.httpClient.get<IGetCustomerDetailsResponse>('endpoint', { params });
+    }
+
+    manualDeposit = (payload: IManualDeposit): Observable<IManualTransactionResponse> => {
+        return this.httpClient.post<IManualTransactionResponse>('endpoint', payload);
+    }
+
+    manualBuy = (payload: IManualBuy): Observable<IManualTransactionResponse> => {
+        return this.httpClient.post<IManualTransactionResponse>('endpoint', payload);
+    }
+
+    revertManualTransaction = (payload: IRevertManualTransaction): Observable<IGenericHttpReponse> => {
+        return this.httpClient.post<IGenericHttpReponse>('endpoint', payload);
+    }
+
+    deleteTransaction = (params: HttpParams): Observable<IGenericHttpReponse> => {
+        return this.httpClient.delete<IGenericHttpReponse>('endpoint', { params });
     }
 }
