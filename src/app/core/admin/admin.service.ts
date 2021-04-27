@@ -35,7 +35,7 @@ export class AdminService {
 
     constructor(private httpClient: HttpClient) { }
 
-    // crypto related methods
+    // ** crypto related methods
     saveCryptoSellingPrice = (payload: ISaveCryptoSellingPrice): Observable<IGenericReponse> => {
         return this.httpClient.post<IGenericReponse>(`/api/v1/admin/save-crypto-selling-price`, payload);
     }
@@ -53,7 +53,7 @@ export class AdminService {
     }
 
 
-    // customer and others related methods
+    // ** customer and others related methods
     createCustomerFiatWallet = (payload: ICreateCustomerFiatWallet): Observable<ICreateCustomerFiatWalletResponse> => {
         return this.httpClient.post<ICreateCustomerFiatWalletResponse>(`/api/v1/admin/create-fiat-wallet-for-customer`, payload);
     }
@@ -94,7 +94,7 @@ export class AdminService {
         return this.httpClient.post<IGenericReponse>(`/api/v1/admin/migrate-fiat-wallet`, payload);
     }
 
-    // transactions related methods
+    // ** transactions related methods
     saveMigrationData = (payload: ISaveMigrationData): Observable<IGenericReponse> => {
         return this.httpClient.post<IGenericReponse>(`/api/v1/admin/save-migration-data`, payload);
     }
