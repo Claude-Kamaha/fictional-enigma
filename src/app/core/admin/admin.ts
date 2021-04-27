@@ -1,8 +1,8 @@
-export interface IGenericHttpReponse {
+export interface IGenericReponse {
     responseCode: string;
     message: string;
 }
-export interface IGetCustomerListPerStatusResponse extends IGenericHttpReponse {
+export interface IGetCustomerListPerStatusResponse extends IGenericReponse {
     data: {
         customer_id: number,
         username: string,
@@ -95,12 +95,6 @@ export interface IManualDeposit {
     amount: number;
     fiatCurrencyCode: string;
 }
-export interface IManualTransactionResponse extends IGenericHttpReponse {
-    data: {
-        transactionId: number,
-        status: string
-    }
-}
 export interface IManualBuy {
     customerUsername: string;
     fiatIsoAlphaCode: string;
@@ -114,6 +108,13 @@ export interface IManualBuy {
     delivered_at: number;
     transaction_hash: string;
 }
+export interface IManualTransactionResponse extends IGenericReponse {
+    data: {
+        transactionId: number,
+        status: string
+    }
+}
+
 export interface IRevertManualTransaction {
     transactionId: number;
 }
@@ -121,7 +122,7 @@ export interface ICreateCustomerFiatWallet {
     username: string;
     balance: number;
 }
-export interface ICreateCustomerFiatWalletResponse extends IGenericHttpReponse {
+export interface ICreateCustomerFiatWalletResponse extends IGenericReponse {
     data: {
         id: number,
         balance: number
@@ -134,7 +135,7 @@ export interface IDeleteTransaction {
 export interface IGetCustomerDetails {
     username: string;
 }
-export interface IGetCustomerDetailsResponse extends IGenericHttpReponse {
+export interface IGetCustomerDetailsResponse extends IGenericReponse {
     data: {
         username: string,
         phone_number: string,
@@ -166,7 +167,51 @@ export interface IGetCustomerDetailsResponse extends IGenericHttpReponse {
         weekly_limit_remaining_amount: number,
         monthly_limit_remaining_amount: number,
         godfather: number,
+    };
+}
+export interface IChangeCustomerType {
+    username: string;
+    type: string;
+    changeReason: string;
+}
+export interface IChangeMoonpaySettings {
+    currencyCode: string;
+    moonpayMin?: number;
+    moonpayMax?: number;
+    moonpayUIMinDisplay?: number;
+    moonpayUIMaxDisplay?: number;
+    moonpayUIAVGDisplay?: number;
+}
+export interface IManualBuyPaymentUpdate {
+    transactionId: number;
+    status: string;
+    message?: string;
+}
+export interface IChangeUserStatus {
+    userId: number;
+    status: string;
+}
+export interface IGetCustomerWallets {
+    customerId: number;
+}
+export interface IGetCustomerWalletsResponse extends IGenericReponse {
+    data: {
+        label: string,
+        address: string,
+        balance: number,
+        dateCreated: number,
+        lastDateUpdated: number
     }[];
 }
+export interface IMigrateFiatWallet {
+    username: string,
+    v1Username: string;
+}
+export interface ISaveMigrationData {
+    username: string,
+    cryptoIsoAlphaCode: string;
+    data?: string;
+}
+
 
 
