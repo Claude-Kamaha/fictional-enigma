@@ -91,10 +91,6 @@ export class AdminService {
         return this.httpClient.put<IGenericReponse>(`${this.apiHost}/update-country-status`, payload);
     }
 
-    migrateFiatWallet = (payload: IMigrateFiatWallet): Observable<IGenericReponse> => {
-        return this.httpClient.post<IGenericReponse>(`${this.apiHost}/migrate-fiat-wallet`, payload);
-    }
-
 
     // ** transactions related methods
     saveMigrationData = (payload: ISaveMigrationData): Observable<IGenericReponse> => {
@@ -123,5 +119,9 @@ export class AdminService {
 
     deleteTransaction = (params: HttpParams): Observable<IGenericReponse> => {
         return this.httpClient.delete<IGenericReponse>(`${this.apiHost}/delete-transaction`, { params });
+    }
+
+    migrateFiatWallet = (payload: IMigrateFiatWallet): Observable<IGenericReponse> => {
+        return this.httpClient.post<IGenericReponse>(`${this.apiHost}/migrate-fiat-wallet`, payload);
     }
 }

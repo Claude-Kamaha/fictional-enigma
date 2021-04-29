@@ -1,6 +1,6 @@
 {
-    "name": "@fuse/demo",
-    "version": "12.1.0",
+    "name": "ejara",
+    "version": "2.0.0",
     "license": "https://themeforest.net/licenses/standard",
     "private": true,
     "scripts": {
