@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Fuse - Admin template and Starter project for Angular
 
 ## Development server
@@ -23,3 +24,9 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+=======
+# fictional-enigma
+Admin Panel for Ejara App
+
+This project uses FUSE(http://preview.themeforest.net/item/fuse-angularjs-material-design-admin-template/full_screen_preview/12931855?_ga=2.57828653.620907068.1584177181-1923669979.1584177181) angular template.
+>>>>>>> 6944cb4b9dc7a51b54c1dd2459252469817ea010
