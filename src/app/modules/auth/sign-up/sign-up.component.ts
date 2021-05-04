@@ -75,7 +75,7 @@ export class AuthSignUpComponent implements OnInit
         this.showAlert = false;
 
         // Sign up
-        this._authService.signUp(this.signUpForm.value)
+        /*this._authService.signUp(this.signUpForm.value)
             .subscribe(
                 (response) => {
 
@@ -100,5 +100,6 @@ export class AuthSignUpComponent implements OnInit
                     this.showAlert = true;
                 }
             );
-    }
+    }*/
+}
 }

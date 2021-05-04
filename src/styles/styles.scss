@@ -2,3 +2,10 @@
 /*  @ Import/write your custom styles here.
 /*  @ Styles from this file will override 'vendors.scss' and Fuse's base styles.
 /* ----------------------------------------------------------------------------------------------------- */
+
+// Import app.theme.scss
+@import "../app/app.theme.scss";
+@import "../app/modules/auth/sign-in/sign-in.theme.scss";
+
+// Import Fuse core library
+@import "@fuse/scss/core";

@@ -1,0 +1,179 @@
+@import "src/@fuse/scss/fuse";
+
+login {
+
+    #login {
+        width: 100%;
+        background: 
+        //url('/assets/images/backgrounds/cryptos2.jpeg') ,
+        url('/assets/images/backgrounds/cryptos.jpg'),
+        url('/assets/images/backgrounds/tezos-moon.jpg');
+       // no-repeat;
+        background-repeat: repeat-y;
+	    background-position: 
+		0 20%,
+		0 100%,
+		0 50%,
+		0 100%,
+		0 0;
+        //background-color: lightblue;
+        background-size: cover;
+        animation: 500s para infinite linear;
+        @keyframes para {
+            100% {
+                background-position: 
+                    -5000px 20%,
+                    -800px 95%,
+                    500px 50%,
+                    1000px 100%,
+                    400px 0;
+                }
+            }
+
+        #login-form-wrapper {
+            flex: 1 0 auto;
+            padding: 32px;
+            //background-color: lightblue;
+            
+
+            @include media-breakpoint('xs') {
+                padding: 16px;
+                
+            }
+
+            
+
+            #login-form {
+                width: 3600px;
+                max-width: 370px;
+                padding: 32px;
+                text-align: center;
+                background:whitesmoke;
+                //background: inherit;
+                border-radius: 30px;
+                @include mat-elevation(16);
+
+                @include media-breakpoint('xs') {
+                    padding: 24px;
+                    width: 100%;
+                }
+
+                .logo {
+                    width: 128px;
+                    margin: 32px auto;
+                }
+
+                .title {
+                    font-size: 20px;
+                    margin: 16px 0 32px 0;
+                }
+
+                form {
+                    width: 100%;
+                    text-align: left;
+
+                    mat-form-field {
+                        width: 100%;
+                    }
+
+                    mat-checkbox {
+                        margin: 0;
+                    }
+
+                    .remember-forgot-password {
+                        font-size: 13px;
+                        margin-top: 8px;
+
+                        .remember-me {
+                            margin-bottom: 16px
+                        }
+
+                        .forgot-password {
+                            font-size: 13px;
+                            font-weight: 600;
+                            margin-bottom: 16px
+                        }
+                    }
+
+                    .submit-button {
+                        width: 220px;
+                        margin: 16px auto;
+                        display: block;
+
+                        @include media-breakpoint('xs') {
+                            width: 90%;
+                        }
+                    }
+                }
+
+                .register {
+                    margin: 32px auto 24px auto;
+                    font-weight: 600;
+
+                    .text {
+                        margin-right: 8px;
+                    }
+                }
+
+                .separator {
+                    font-size: 15px;
+                    font-weight: 600;
+                    margin: 24px auto;
+                    position: relative;
+                    overflow: hidden;
+                    width: 100px;
+
+                    .text {
+                        display: inline-flex;
+                        position: relative;
+                        padding: 0 8px;
+                        color: white;
+                        z-index: 9999;
+
+                        &:before,
+                        &:after {
+                            content: '';
+                            display: block;
+                            width: 30px;
+                            position: absolute;
+                            top: 10px;
+                            border-top: 1px solid;
+                        }
+
+                        &:before {
+                            right: 100%;
+                        }
+
+                        &:after {
+                            left: 100%;
+                        }
+                    }
+                }
+
+                button {
+
+                    &.google,
+                    &.facebook {
+                        width: 192px;
+                        text-transform: none;
+                        color: #FFFFFF;
+                        font-size: 13px;
+                    }
+
+                    @include media-breakpoint('xs') {
+                        width: 80%;
+                    }
+
+                    &.google {
+                        background-color: #D73D32;
+                        margin-bottom: 8px;
+                    }
+
+                    &.facebook {
+                        background-color: rgb(63, 92, 154);
+                    }
+                }
+            }
+        }
+    }
+}
