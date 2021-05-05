@@ -1,18 +1,15 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
-import { catchError, map } from 'rxjs/operators';
+import { catchError, map, tap } from 'rxjs/operators';
 import { Observable, of, throwError } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 import { AuthUtils } from 'app/core/auth/auth.utils';
 import { UserService } from 'app/core/user/user.service';
 //import 'rxjs/add/operator/catch';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 
-const httpOptions = {
-  headers: new HttpHeaders({
-    'Content-Type':  'application/json',
-  })
-};
+
 @Injectable({
   providedIn: 'root',
 })
@@ -23,10 +20,18 @@ export class AuthService {
 
   constructor(
       private _httpClient: HttpClient,
-      private _userService: UserService
+      private _userService: UserService,
+      private snackBar: MatSnackBar 
       ) { 
     
   }
+ httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type':  'application/json',
+      'client-id': '8d90927083',
+      'api-key': 'CeL1J]kPJSn]&@$Rg9kk0qbIL'
+    })
+  };
    // -----------------------------------------------------------------------------------------------------
     // @ Accessors
     // -----------------------------------------------------------------------------------------------------
@@ -76,7 +81,7 @@ export class AuthService {
 
 
 
-  loginCustomer(log: string,password: string){
+  loginCustomer(email:string,password:string): Observable<any> {
     
  // -----------------------------------------------------------------------------------------------------
     
@@ -107,13 +112,14 @@ export class AuthService {
 //Method 2: Storing customer details and connecting the api
 // -----------------------------------------------------------------------------------------------------
    
-     var data="log="+log+"&password="+password;
+  /**   var data="log="+email+"&password="+password;
      var reqHeader = new HttpHeaders({
       'Content-Type':  'application/json',
       'client-id': '8d90927083',
       'api-key': 'CeL1J]kPJSn]&@$Rg9kk0qbIL'
    });
   return this._httpClient.post(this.apiURL ,data,{headers:reqHeader}).pipe(
+      console.log("reached");
     catchError(this.handleError));
     }
   handleError(err:any){
@@ -123,6 +129,69 @@ export class AuthService {
     return throwError(err);
   
 }
+*/
+    ​var user={
+        "log":email,
+        "password":password
+        
+      }
+     const Url = this.apiURL;  // URL to web prod
+     console.log(user);
+        return this._httpClient.post<any>(Url, user, this.httpOptions).pipe(
+          tap(() => console.log('send succesfuly')),
+          catchError(this.handleError<any>('send'))
+        );
+      }
+    ​
+    ​
+      private handleError<T>(operation = 'operation', result?: T) {
+        return (error: any)=> {
+             
+      switch (error.status) {
+        case 201: {
+          this.snackBar.open('The provided username/email and password combination does not match any user in the database', 'OK', {
+            verticalPosition: 'top',
+            duration: 4000,
+        });
+            return `Internal Server Error: ${(error.body.message)}`;
+        }
+        case 401: {
+          this.snackBar.open('The corresponding account is either desactivated, frozen or deleted.', 'OK', {
+            verticalPosition: 'top',
+            duration: 4000,
+        });
+          return `Not found: ${(error.body.message)}`;;
+        }
+        case 500: {
+          this.snackBar.open('An error occured. Contact an admin for assistance', 'OK', {
+            verticalPosition: 'top',
+            duration: 4000,
+        });
+            return `Internal Server Error: ${(error.body.message)}`;
+        }
+        default: {
+            return `Unknown Server Error: ${(error.body.message)}`;
+        }
+  
+    }
+      // TODO: send the error to remote logging infrastructure
+      console.log(error.body.message); // log to console instead
+
+​
+      // TODO: better job of transforming error for user consumption
+​
+​
+      // Let the app keep running by returning an empty result.
+      return of(result as T);
+        };
+      }
+    
+
+
+
+
+
+
 /**
      * Sign in using the access token
      */
