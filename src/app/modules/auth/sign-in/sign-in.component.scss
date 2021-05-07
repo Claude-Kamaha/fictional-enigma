@@ -3,9 +3,8 @@
 auth-sign-in {
 
     #login {
-        //width: 100%;
-       
-        
+        //width: 200%;
+     max-width: 1000px;
        margin:auto;
        
         //background-color: lightblue;
@@ -13,6 +12,7 @@ auth-sign-in {
       
        
         #login-form-wrapper {
+           // max-width: 800px;
             flex: 1 0 auto;
             padding: 32px;
   
@@ -27,7 +27,7 @@ auth-sign-in {
 
             #login-form {
                 width: 3600px;
-                max-width: 370px;
+                max-width: 600px;
                 padding: 32px;
                 text-align: center;
                 background:whitesmoke;
