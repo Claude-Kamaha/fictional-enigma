@@ -43,6 +43,16 @@ auth-sign-in {
                 .logo {
                     width: 128px;
                     margin: 32px auto;
+
+                    span {
+                        border-radius: 100%;
+                        overflow: hidden;
+
+                        img{
+                            border-radius: 100%;
+                            display: block;
+                        }
+                    }
                 }
 
                 .title {

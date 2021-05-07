@@ -1,78 +1,54 @@
-
-<div  id="login" fxLayout="row">
+<div id="login" fxLayout="row">
     <div id="login-form-wrapper" fxLayout="column" fxLayoutAlign="center center">
         <div id="login-form" [@animate]="{value:'*',params:{duration:'300ms',y:'100px'}}">
             <!-- Logo -->
-            <div class="logo" >
-                <img src="assets/images/logo/ejara.jpeg">
+            <div class="logo">
+                <span>
+                    <img src="assets/images/logo/ejara.jpeg">
+                </span>
             </div>
 
             <!-- Title -->
             <div class="title">Login to your account</div>
-            
-               
-            
-            
+
+
+
+
 
             <!-- Alert -->
-            <fuse-alert
-                class="mt-8 -mb-4"
-                *ngIf="showAlert"
-                [appearance]="'outline'"
-                [showIcon]="false"
-                [type]="alert.type"
-                [@shake]="alert.type === 'error'">
+            <fuse-alert class="mt-8 -mb-4" *ngIf="showAlert" [appearance]="'outline'" [showIcon]="false"
+                [type]="alert.type" [@shake]="alert.type === 'error'">
                 {{alert.message}}
             </fuse-alert>
 
             <!-- Sign in form -->
-            <form
-                class="mt-8"
-                [formGroup]="signInForm"
-                #signInNgForm="ngForm"
-                (ngSubmit)="onSubmit()">
+            <form class="mt-8" [formGroup]="signInForm" #signInNgForm="ngForm" (ngSubmit)="onSubmit()">
 
                 <!-- Email field -->
                 <mat-form-field appearance="outline">
                     <mat-label>Email </mat-label>
-                    <input
-                        id="email"
-                        matInput
-                        [formControlName]="'email'"
-                        #email>
+                    <input id="email" matInput [formControlName]="'email'" #email>
                     <mat-icon matSuffix class="secondary-text">mail</mat-icon>
                     <mat-error *ngIf="signInForm.get('email').hasError('required')">
                         Email address is required
                     </mat-error>
-                    <mat-error
-                    *ngIf="!signInForm.get('email').hasError('required') &&
+                    <mat-error *ngIf="!signInForm.get('email').hasError('required') &&
                     signInForm.get('email').hasError('email')">
-                    Please enter a valid email address
-                </mat-error>
+                        Please enter a valid email address
+                    </mat-error>
                 </mat-form-field>
 
                 <!-- Password field -->
-                <mat-form-field  appearance="outline">
+                <mat-form-field appearance="outline">
                     <mat-label>Password</mat-label>
-                    <input
-                        id="password"
-                        matInput
-                        type="password"
-                        [formControlName]="'password'"
-                        #password>
-                        
-                    <button
-                        mat-icon-button
-                        type="button"
+                    <input id="password" matInput type="password" [formControlName]="'password'" #password>
+
+                    <button mat-icon-button type="button"
                         (click)="password.type === 'password' ? password.type = 'text' : password.type = 'password'"
                         matSuffix>
-                        <mat-icon
-                            class="icon-size-5"
-                            *ngIf="password.type === 'password'"
+                        <mat-icon class="icon-size-5" *ngIf="password.type === 'password'"
                             [svgIcon]="'heroicons_solid:eye'"></mat-icon>
-                        <mat-icon
-                            class="icon-size-5"
-                            *ngIf="password.type === 'text'"
+                        <mat-icon class="icon-size-5" *ngIf="password.type === 'text'"
                             [svgIcon]="'heroicons_solid:eye-off'"></mat-icon>
                     </button>
                     <mat-error>
@@ -82,24 +58,17 @@
 
                 <!-- Actions -->
                 <div class="remember-forgot-password" fxLayout="row" fxLayout.xs="column"
-                fxLayoutAlign="space-between center">
-                    <mat-checkbox
-                        [color]="'primary'"
-                        class="remember-me" aria-label="Remember Me">
+                    fxLayoutAlign="space-between center">
+                    <mat-checkbox [color]="'primary'" class="remember-me" aria-label="Remember Me">
                         Remember me
                     </mat-checkbox>
-                       
-                    
+
+
                 </div>
 
                 <!-- Submit button -->
-                <button
-                    class="fuse-mat-button-large w-full mt-6"
-                    mat-flat-button
-                    [color]="'primary'"
-                    [disabled]="signInForm.disabled"
-                    
-                    type="submit">
+                <button class="fuse-mat-button-large w-full mt-6" mat-flat-button [color]="'primary'"
+                    [disabled]="signInForm.disabled" type="submit">
                     LOGIN
                     <!-- <span *ngIf="!signInForm.disabled">
                         Sign in
@@ -110,11 +79,11 @@
                         [mode]="'indeterminate'"></mat-progress-spinner>-->
                 </button>
 
-               
+
             </form>
         </div>
     </div>
-   
+
 </div>
 
 
@@ -182,9 +151,9 @@
             </form>
 
 
-          
 
-           
+
+
 
         </div>
 
