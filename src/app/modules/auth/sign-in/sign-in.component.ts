@@ -1,12 +1,13 @@
 import { Component, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
-
+import { FuseConfigService } from '../../../../@fuse/services/config/config.service';
 //import { FuseConfigService } from '@fuse/services/config.service';
-import { FuseAnimations } from '@fuse/animations';
+import { FuseAnimations } from '../../../../@fuse/animations';
 import { AuthService } from '../../../core/auth/auth.service'
 import { HttpErrorResponse } from '@angular/common/http';
 import {  ActivatedRoute, Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
+
 
 @Component({
     selector     : 'auth-sign-in',
@@ -36,7 +37,8 @@ export class AuthSignInComponent implements OnInit
         private _authService: AuthService,
         private _router: Router,
        private _activatedRoute: ActivatedRoute,
-        private snackBar: MatSnackBar
+        private snackBar: MatSnackBar,
+        private _fuseConfigService: FuseConfigService
     )
     {
         // Configure the layout
