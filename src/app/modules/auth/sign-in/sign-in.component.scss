@@ -6,28 +6,28 @@ auth-sign-in {
         //width: 200%;
      max-width: 1000px;
        margin:auto;
-       
+
         //background-color: lightblue;
         background-size: cover;
-      
-       
+
+
         #login-form-wrapper {
            // max-width: 800px;
             flex: 1 0 auto;
             padding: 32px;
-  
-  
+
+
 
             @include media-breakpoint('xs') {
                 padding: 16px;
-                
+
             }
 
-            
+
 
             #login-form {
                 width: 3600px;
-                max-width: 600px;
+                max-width: 500px;
                 padding: 32px;
                 text-align: center;
                 background:whitesmoke;
