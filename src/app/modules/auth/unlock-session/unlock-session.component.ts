@@ -86,7 +86,7 @@ export class AuthUnlockSessionComponent implements OnInit
         // Hide the alert
         this.showAlert = false;
 
-        this._authService.unlockSession({
+       /* this._authService.unlockSession({
             email   : this._email ?? '',
             password: this.unlockSessionForm.get('password').value
         }).subscribe(
@@ -124,6 +124,6 @@ export class AuthUnlockSessionComponent implements OnInit
                 // Show the alert
                 this.showAlert = true;
             }
-        );
+        );*/
     }
 }

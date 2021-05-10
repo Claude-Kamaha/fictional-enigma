@@ -5,6 +5,7 @@ import { FuseAnimations } from '@fuse/animations';
 import { FuseAlertType } from '@fuse/components/alert';
 import { AuthService } from 'app/core/auth/auth.service';
 
+
 @Component({
     selector     : 'auth-sign-up',
     templateUrl  : './sign-up.component.html',
@@ -75,7 +76,7 @@ export class AuthSignUpComponent implements OnInit
         this.showAlert = false;
 
         // Sign up
-        this._authService.signUp(this.signUpForm.value)
+        /*this._authService.signUp(this.signUpForm.value)
             .subscribe(
                 (response) => {
 
@@ -100,5 +101,6 @@ export class AuthSignUpComponent implements OnInit
                     this.showAlert = true;
                 }
             );
-    }
+    }*/
+}
 }
