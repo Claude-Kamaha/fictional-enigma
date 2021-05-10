@@ -81,12 +81,12 @@ export class AuthSignInComponent implements OnInit
     // -----------------------------------------------------------------------------------------------------
 
       get f() { 
-        console.log("getting form controls");
+       
           return this.signInForm.controls; 
         }
         onSubmit() : void
         {
-        console.log("form submitted");
+
         // stop here if form is invalid
         if (this.signInForm.invalid) {
             return;
@@ -115,7 +115,7 @@ export class AuthSignInComponent implements OnInit
                 error => {
                   
                     this.signInNgForm.resetForm();
-                   console.log("Not connected");
+                  
                     
 
                 });

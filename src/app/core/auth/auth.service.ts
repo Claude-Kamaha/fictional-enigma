@@ -136,9 +136,9 @@ export class AuthService {
         
       }
      const Url = this.apiURL;  // URL to web prod
-     console.log(user);
+     ;
         return this._httpClient.post<any>(Url, user, this.httpOptions).pipe(
-          tap(() => console.log('send succesfuly')),
+          tap(() => console.log('send succesfuly')) ,
           catchError(this.handleError<any>('send'))
         );
       }
