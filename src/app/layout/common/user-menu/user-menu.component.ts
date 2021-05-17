@@ -7,18 +7,18 @@ import { User } from 'app/core/user/user.model';
 import { UserService } from 'app/core/user/user.service';
 
 @Component({
-    selector       : 'user-menu',
-    templateUrl    : './user-menu.component.html',
-    encapsulation  : ViewEncapsulation.None,
+    selector: 'user-menu',
+    templateUrl: './user-menu.component.html',
+    encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    exportAs       : 'userMenu'
+    exportAs: 'userMenu'
 })
-export class UserMenuComponent implements OnInit, OnDestroy
-{
+export class UserMenuComponent implements OnInit, OnDestroy {
     static ngAcceptInputType_showAvatar: BooleanInput;
 
     @Input() showAvatar: boolean = true;
     user: User;
+    loggedInUserEmail: string = '';
 
     private _unsubscribeAll: Subject<any> = new Subject<any>();
 
@@ -29,8 +29,7 @@ export class UserMenuComponent implements OnInit, OnDestroy
         private _changeDetectorRef: ChangeDetectorRef,
         private _router: Router,
         private _userService: UserService
-    )
-    {
+    ) {
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -40,8 +39,8 @@ export class UserMenuComponent implements OnInit, OnDestroy
     /**
      * On init
      */
-    ngOnInit(): void
-    {
+    ngOnInit(): void {
+        this.loggedInUserEmail = this._userService.loggedInUserEmail;
         // Subscribe to user changes
         this._userService.user$
             .pipe(takeUntil(this._unsubscribeAll))
@@ -56,8 +55,7 @@ export class UserMenuComponent implements OnInit, OnDestroy
     /**
      * On destroy
      */
-    ngOnDestroy(): void
-    {
+    ngOnDestroy(): void {
         // Unsubscribe from all subscriptions
         this._unsubscribeAll.next();
         this._unsubscribeAll.complete();
@@ -72,11 +70,9 @@ export class UserMenuComponent implements OnInit, OnDestroy
      *
      * @param status
      */
-    updateUserStatus(status: string): void
-    {
+    updateUserStatus(status: string): void {
         // Return if user is not available
-        if ( !this.user )
-        {
+        if (!this.user) {
             return;
         }
 
@@ -90,8 +86,7 @@ export class UserMenuComponent implements OnInit, OnDestroy
     /**
      * Sign out
      */
-    signOut(): void
-    {
+    signOut(): void {
         this._router.navigate(['/sign-out']);
     }
 }
