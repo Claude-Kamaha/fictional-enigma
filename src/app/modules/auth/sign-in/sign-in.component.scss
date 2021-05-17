@@ -1,41 +1,34 @@
 //@import "src/@fuse/scss/fuse";
 @import "../../../../@fuse/styles/fuse";
 auth-sign-in {
-
     #login {
         //width: 200%;
-     max-width: 1000px;
-       margin:auto;
+        max-width: 1000px;
+        margin: auto;
 
         //background-color: lightblue;
         background-size: cover;
 
-
         #login-form-wrapper {
-           // max-width: 800px;
+            // max-width: 800px;
             flex: 1 0 auto;
             padding: 32px;
 
-
-
-            @include media-breakpoint('xs') {
+            @include media-breakpoint("xs") {
                 padding: 16px;
-
             }
-
-
 
             #login-form {
                 width: 3600px;
                 max-width: 500px;
                 padding: 32px;
                 text-align: center;
-                background:whitesmoke;
+                background: whitesmoke;
                 //background: inherit;
                 border-radius: 30px;
                 @include mat-elevation(16);
 
-                @include media-breakpoint('xs') {
+                @include media-breakpoint("xs") {
                     padding: 24px;
                     width: 100%;
                 }
@@ -48,7 +41,7 @@ auth-sign-in {
                         border-radius: 100%;
                         overflow: hidden;
 
-                        img{
+                        img {
                             border-radius: 100%;
                             display: block;
                         }
@@ -77,13 +70,13 @@ auth-sign-in {
                         margin-top: 8px;
 
                         .remember-me {
-                            margin-bottom: 16px
+                            margin-bottom: 16px;
                         }
 
                         .forgot-password {
                             font-size: 13px;
                             font-weight: 600;
-                            margin-bottom: 16px
+                            margin-bottom: 16px;
                         }
                     }
 
@@ -92,7 +85,7 @@ auth-sign-in {
                         margin: 16px auto;
                         display: block;
 
-                        @include media-breakpoint('xs') {
+                        @include media-breakpoint("xs") {
                             width: 90%;
                         }
                     }
@@ -124,7 +117,7 @@ auth-sign-in {
 
                         &:before,
                         &:after {
-                            content: '';
+                            content: "";
                             display: block;
                             width: 30px;
                             position: absolute;
@@ -143,21 +136,20 @@ auth-sign-in {
                 }
 
                 button {
-
                     &.google,
                     &.facebook {
                         width: 192px;
                         text-transform: none;
-                        color: #FFFFFF;
+                        color: #ffffff;
                         font-size: 13px;
                     }
 
-                    @include media-breakpoint('xs') {
+                    @include media-breakpoint("xs") {
                         width: 80%;
                     }
 
                     &.google {
-                        background-color: #D73D32;
+                        background-color: #d73d32;
                         margin-bottom: 8px;
                     }
 

@@ -51,9 +51,7 @@
                         <mat-icon class="icon-size-5" *ngIf="password.type === 'text'"
                             [svgIcon]="'heroicons_solid:eye-off'"></mat-icon>
                     </button>
-                    <mat-error>
-                        Password is required
-                    </mat-error>
+                    <mat-error> Password is required </mat-error>
                 </mat-form-field>
 
                 <!-- Actions -->
@@ -62,24 +60,15 @@
                     <mat-checkbox [color]="'primary'" class="remember-me" aria-label="Remember Me">
                         Remember me
                     </mat-checkbox>
-
-
                 </div>
 
                 <!-- Submit button -->
                 <button class="fuse-mat-button-large w-full mt-6" mat-flat-button [color]="'primary'"
-                    [disabled]="signInForm.disabled" type="submit">
-                    LOGIN
-                    <!-- <span *ngIf="!signInForm.disabled">
-                        Sign in
-                    </span>
-                    <mat-progress-spinner
-                        *ngIf="signInForm.disabled"
-                        [diameter]="24"
-                        [mode]="'indeterminate'"></mat-progress-spinner>-->
+                    [disabled]="isDisabled" type="submit"> LOGIN
+                    <mat-spinner class="login-spinner" mode="indeterminate" [diameter]="30" *ngIf="spin"
+                        style="margin-top: 0 !important; margin-left: 10px;">
+                    </mat-spinner>
                 </button>
-
-
             </form>
         </div>
     </div>

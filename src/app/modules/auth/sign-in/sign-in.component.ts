@@ -22,6 +22,8 @@ export class AuthSignInComponent implements OnInit {
     signInForm: FormGroup;
     showAlert: boolean = false;
     err: String;
+    spin: boolean = false;
+    isDisabled: boolean = false;
 
     /**
      * Constructor
@@ -37,25 +39,7 @@ export class AuthSignInComponent implements OnInit {
         private snackBar: MatSnackBar,
         private _fuseConfigService: FuseConfigService,
         private _userService: UserService
-    ) {
-        // Configure the layout
-        /*  this._fuseConfigService.config = {
-              layout: {
-                  navbar   : {
-                      hidden: true
-                  },
-                  toolbar  : {
-                      hidden: true
-                  },
-                  footer   : {
-                      hidden: true
-                  },
-                  sidepanel: {
-                      hidden: true
-                  }
-              }
-          };*/
-    }
+    ) { }
 
     ngOnInit(): void {
         this.signInForm = this._formBuilder.group({
@@ -78,29 +62,37 @@ export class AuthSignInComponent implements OnInit {
             return;
         }
 
+        this.spin = true;
+        this.isDisabled = true;
+
         this._authService.loginCustomer(this.form.email.value, this.form.password.value)
             .subscribe(
                 data => {
-                    this._userService.loggedInUserEmail = this.form.email.value;
-                    if (data.responsecode == "ok") {
-
+                    if (data.responsecode !== "login_ok") {
                         this.snackBar.open('The provided username/email and password combination does not match any user in the database', 'OK', {
                             verticalPosition: 'top',
                             duration: 2000,
                         });
+
+                        return;
                     }
-                    //Set the redirect url.
-                    // The '/signed-in-redirect' is a dummy url to catch the request and redirect the user
-                    // to the correct page after a successful sign in. This way, that url can be set via
-                    // routing file and we don't have to touch here.
+
+                    this._userService.loggedInUserEmail = this.form.email.value;
+                    this.spin = false;
+
+                    // url to redirect to when login is successful
                     const redirectURL = this._activatedRoute.snapshot.queryParamMap.get('redirectURL') || '/signed-in-redirect';
 
                     // Navigate to the redirect url
                     this._router.navigateByUrl(redirectURL);
-
                 },
                 error => {
+                    this.isDisabled = false;
                     this.signInNgForm.resetForm();
+                    this.snackBar.open('An error occurred. Please try again later', 'OK', {
+                        verticalPosition: 'top',
+                        duration: 2000,
+                    });
                 });
     }
 
