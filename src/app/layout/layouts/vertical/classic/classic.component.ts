@@ -7,12 +7,12 @@ import { FuseNavigationService } from '@fuse/components/navigation';
 import { InitialData } from 'app/app.types';
 
 @Component({
-    selector     : 'classic-layout',
-    templateUrl  : './classic.component.html',
+    selector: 'classic-layout',
+    templateUrl: './classic.component.html',
+    styleUrls: ['./classic.component.scss'],
     encapsulation: ViewEncapsulation.None
 })
-export class ClassicLayoutComponent implements OnInit, OnDestroy
-{
+export class ClassicLayoutComponent implements OnInit, OnDestroy {
     data: InitialData;
     isScreenSmall: boolean;
     private _unsubscribeAll: Subject<any> = new Subject<any>();
@@ -25,8 +25,7 @@ export class ClassicLayoutComponent implements OnInit, OnDestroy
         private _router: Router,
         private _fuseMediaWatcherService: FuseMediaWatcherService,
         private _fuseNavigationService: FuseNavigationService
-    )
-    {
+    ) {
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -36,8 +35,7 @@ export class ClassicLayoutComponent implements OnInit, OnDestroy
     /**
      * Getter for current year
      */
-    get currentYear(): number
-    {
+    get currentYear(): number {
         return new Date().getFullYear();
     }
 
@@ -48,8 +46,7 @@ export class ClassicLayoutComponent implements OnInit, OnDestroy
     /**
      * On init
      */
-    ngOnInit(): void
-    {
+    ngOnInit(): void {
         // Subscribe to the resolved route mock-api
         this._activatedRoute.data.subscribe((data: Data) => {
             this.data = data.initialData;
@@ -58,7 +55,7 @@ export class ClassicLayoutComponent implements OnInit, OnDestroy
         // Subscribe to media changes
         this._fuseMediaWatcherService.onMediaChange$
             .pipe(takeUntil(this._unsubscribeAll))
-            .subscribe(({matchingAliases}) => {
+            .subscribe(({ matchingAliases }) => {
 
                 // Check if the screen is small
                 this.isScreenSmall = !matchingAliases.includes('md');
@@ -68,8 +65,7 @@ export class ClassicLayoutComponent implements OnInit, OnDestroy
     /**
      * On destroy
      */
-    ngOnDestroy(): void
-    {
+    ngOnDestroy(): void {
         // Unsubscribe from all subscriptions
         this._unsubscribeAll.next();
         this._unsubscribeAll.complete();
@@ -84,13 +80,11 @@ export class ClassicLayoutComponent implements OnInit, OnDestroy
      *
      * @param name
      */
-    toggleNavigation(name: string): void
-    {
+    toggleNavigation(name: string): void {
         // Get the navigation
         const navigation = this._fuseNavigationService.getComponent(name);
 
-        if ( navigation )
-        {
+        if (navigation) {
             // Toggle the opened status
             navigation.toggle();
         }
