@@ -3,6 +3,7 @@ import { AuthGuard } from 'app/core/auth/guards/auth.guard';
 import { NoAuthGuard } from 'app/core/auth/guards/noAuth.guard';
 import { LayoutComponent } from 'app/layout/layout.component';
 import { InitialDataResolver } from 'app/app.resolvers';
+import { CustomersComponent } from './modules/customers/customers.component';
 
 // @formatter:off
 // tslint:disable:max-line-length
@@ -47,6 +48,17 @@ export const appRoutes: Route[] = [
         },
         children: [
             { path: 'home', loadChildren: () => import('app/modules/landing/home/home.module').then(m => m.LandingHomeModule) },
+        ]
+    },
+//customer route
+    {
+        path: '',
+        component: CustomersComponent,
+        data: {
+            layout: 'classic'
+        },
+        children: [
+            { path: 'customer', loadChildren: () => import('app/modules/customers/customers.module').then(m => m.CustomersModule) },
         ]
     },
 ];

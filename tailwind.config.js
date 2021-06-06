@@ -78,7 +78,7 @@ const config = {
         // development and production, we will decide whether to purge or not
         // by looking at the process arguments. If there is a "build" argument
         // with the "ng" command then we will enable the purge.
-        enabled: process?.argv?.find(arg => arg.includes('ng')) && process?.argv?.indexOf('build') !== -1,
+       // enabled: process?.argv?.find(arg => arg.includes('ng')) && process?.argv?.indexOf('build') !== -1,
         content: ['./src/**/*.{html,scss,ts}'],
         options: {
             safelist: {

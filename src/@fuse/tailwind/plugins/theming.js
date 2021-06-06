@@ -76,9 +76,9 @@ function generateThemesObject(themes)
             [
                 key,
                 {
-                    primary: theme?.primary?.DEFAULT ?? normalizedDefaultTheme.primary.DEFAULT,
-                    accent : theme?.accent?.DEFAULT ?? normalizedDefaultTheme.accent.DEFAULT,
-                    warn   : theme?.warn?.DEFAULT ?? normalizedDefaultTheme.warn.DEFAULT
+                //    primary: theme?.primary?.DEFAULT ?? normalizedDefaultTheme.primary.DEFAULT,
+                 //   accent : theme?.accent?.DEFAULT ?? normalizedDefaultTheme.accent.DEFAULT,
+                  //  warn   : theme?.warn?.DEFAULT ?? normalizedDefaultTheme.warn.DEFAULT
                 }
             ]
         ]);

@@ -13,6 +13,9 @@ import { LayoutModule } from 'app/layout/layout.module';
 import { AppComponent } from 'app/app.component';
 import { appRoutes } from 'app/app.routing';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { CustomersComponent } from './modules/customers/customers.component';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatTableModule} from '@angular/material/table';
 
 const routerConfig: ExtraOptions = {
     scrollPositionRestoration: 'enabled',
@@ -22,7 +25,8 @@ const routerConfig: ExtraOptions = {
 
 @NgModule({
     declarations: [
-        AppComponent
+        AppComponent,
+        CustomersComponent
     ],
     imports     : [
         BrowserModule,
@@ -34,6 +38,9 @@ const routerConfig: ExtraOptions = {
         FuseConfigModule.forRoot(appConfig),
         FuseMockApiModule.forRoot(mockApiServices),
         MatSnackBarModule,
+        MatPaginatorModule,
+        MatTableModule,
+
         // Core
         CoreModule,
 
