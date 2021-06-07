@@ -12,10 +12,16 @@ import { mockApiServices } from 'app/mock-api';
 import { LayoutModule } from 'app/layout/layout.module';
 import { AppComponent } from 'app/app.component';
 import { appRoutes } from 'app/app.routing';
+//import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { CustomersComponent } from './modules/customers/customers.component';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatTableModule} from '@angular/material/table';
+import { AdminProfileComponent } from './modules/admin-profile/admin-profile.component';
+import { KycTableComponent } from './modules/kyc-table/kyc-table.component';
+import { MatSortModule } from '@angular/material/sort';
+import { MatIconModule } from '@angular/material/icon';
+//import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 const routerConfig: ExtraOptions = {
     scrollPositionRestoration: 'enabled',
@@ -26,7 +32,9 @@ const routerConfig: ExtraOptions = {
 @NgModule({
     declarations: [
         AppComponent,
-        CustomersComponent
+        CustomersComponent,
+        AdminProfileComponent,
+        KycTableComponent
     ],
     imports     : [
         BrowserModule,
@@ -40,7 +48,8 @@ const routerConfig: ExtraOptions = {
         MatSnackBarModule,
         MatPaginatorModule,
         MatTableModule,
-
+        MatIconModule,
+        //NgxChartsModule,
         // Core
         CoreModule,
 
@@ -48,7 +57,11 @@ const routerConfig: ExtraOptions = {
         LayoutModule,
 
         // 3rd party modules
-        MarkdownModule.forRoot({})
+        MarkdownModule.forRoot({}),
+
+        MatSortModule,
+
+        //NgbModule.forRoot()
     ],
     bootstrap   : [
         AppComponent

@@ -66,8 +66,10 @@ export class AuthSignInComponent implements OnInit {
         this.isDisabled = true;
 
         this._authService.loginCustomer(this.form.email.value, this.form.password.value)
-            .subscribe(
-                data => {
+                
+                    .subscribe(
+                        data =>{
+                   localStorage.setItem('token',data.token);                 
                     if (data.responsecode !== "login_ok") {
                         this.snackBar.open('The provided username/email and password combination does not match any user in the database', 'OK', {
                             verticalPosition: 'top',

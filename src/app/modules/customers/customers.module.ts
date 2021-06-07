@@ -7,6 +7,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import {MatTableModule} from '@angular/material/table';
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
+//import { MatPaginatorModule } from '@angular/material';
 
 const customersRoutes: Route[] = [
   {
@@ -25,7 +27,8 @@ const customersRoutes: Route[] = [
 MatTableModule,
 MatPaginatorModule,
 MatSortModule,
-MatProgressSpinnerModule
+MatProgressSpinnerModule,
+MatSnackBarModule
   ]
 })
 export class CustomersModule { }
