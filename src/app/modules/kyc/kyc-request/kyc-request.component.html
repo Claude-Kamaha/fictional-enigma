@@ -1,12 +1,19 @@
 <div>
-
+    <h1 [@animate]="{value:'*',params:{delay:'100ms', y:'25px'}}">
+        WELCOME TO Customer KYC
+    </h1>
 </div>
 &nbsp;&nbsp;
 &nbsp;&nbsp;
+
+<div class="filters" fxLayout="column" fxLayoutAlign="center center"
+                 fxLayout.gt-xs="row" fxLayoutAlign.gt-xs="space-between center">
 <mat-form-field>
     <mat-label>Filter</mat-label>
     <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Seach Username">
 </mat-form-field>
+
+</div>
 <div class="mat-elevation-z8">
     <table mat-table  [dataSource]='dataSource' class="full-width-table" matSort aria-label="Elements" >
       <!-- Username Column -->

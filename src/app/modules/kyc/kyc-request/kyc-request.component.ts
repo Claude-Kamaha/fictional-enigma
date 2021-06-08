@@ -17,8 +17,17 @@ export class KycRequestComponent implements OnInit {
    state: String = 'pending'|| 'confirmed' || 'rejected';
 displayedColumns: string[] =['username','request_status','level'];
 dataSource = new MatTableDataSource<Ikyc>(this.Kyc_list);
+
+currentStatus: string;
+UsersFilteredByStatus: any[];
+  Status: any[];
+filteredStatus: any[];
+
+
   
-  constructor(private kycservice:KycServiceService) { }
+  constructor(private kycservice:KycServiceService) { 
+    this.currentStatus = 'all';
+  }
 
   ngOnInit(): void {
     this.dataSource.paginator = this.paginator;
@@ -37,3 +46,4 @@ dataSource = new MatTableDataSource<Ikyc>(this.Kyc_list);
   }
 
 }
+//Angular 9 Tutorial For Beginners #65- HTTP Params

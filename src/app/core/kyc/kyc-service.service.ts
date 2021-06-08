@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -27,5 +27,26 @@ export class KycServiceService {
     const Url = `https://sandbox-nellys-coin.ejaraapis.xyz/api/v1/customer/find-all-kyc-requests`+'?status='+status;
 return this.httpclient.get<any>(Url,httpOptions)
 
+}
+
+public getKycById(){
+  const httpOptions = {
+    headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'client-id': '8d90927083',
+        'api-key': 'CeL1J]kPJSn]&@$Rg9kk0qbIL',
+        'Authorization': `Bearer ${this.token}`
+        
+    }),
+    httpParams: new HttpParams({
+      fromObject: {
+        request_Id: 'claude'
+  
+      }
+    })
+  }
+  
+  const Url = `https://sandbox-nellys-coin.ejaraapis.xyz/api/v1/customer/find-customer-kyc-info`//+?requestId=1;
+  return this.httpclient.get<any>(Url,httpOptions,)
 }
 }
