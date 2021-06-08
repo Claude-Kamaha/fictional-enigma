@@ -21,6 +21,10 @@ import { AdminProfileComponent } from './modules/admin-profile/admin-profile.com
 import { KycTableComponent } from './modules/kyc-table/kyc-table.component';
 import { MatSortModule } from '@angular/material/sort';
 import { MatIconModule } from '@angular/material/icon';
+import { KycRequestComponent } from './modules/kyc/kyc-request/kyc-request.component';
+import { DataComponent } from './data/data.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 //import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 const routerConfig: ExtraOptions = {
@@ -34,7 +38,9 @@ const routerConfig: ExtraOptions = {
         AppComponent,
         CustomersComponent,
         AdminProfileComponent,
-        KycTableComponent
+        KycTableComponent,
+        KycRequestComponent,
+        DataComponent
     ],
     imports     : [
         BrowserModule,
@@ -45,10 +51,13 @@ const routerConfig: ExtraOptions = {
         FuseModule,
         FuseConfigModule.forRoot(appConfig),
         FuseMockApiModule.forRoot(mockApiServices),
+        //Material Module
         MatSnackBarModule,
         MatPaginatorModule,
         MatTableModule,
         MatIconModule,
+        MatFormFieldModule,
+        MatInputModule,
         //NgxChartsModule,
         // Core
         CoreModule,

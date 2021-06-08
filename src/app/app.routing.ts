@@ -4,6 +4,7 @@ import { NoAuthGuard } from 'app/core/auth/guards/noAuth.guard';
 import { LayoutComponent } from 'app/layout/layout.component';
 import { InitialDataResolver } from 'app/app.resolvers';
 import { CustomersComponent } from './modules/customers/customers.component';
+import { KycRequestComponent } from './modules/kyc/kyc-request/kyc-request.component';
 
 // @formatter:off
 // tslint:disable:max-line-length
@@ -59,6 +60,18 @@ export const appRoutes: Route[] = [
         },
         children: [
             { path: 'customer', loadChildren: () => import('app/modules/customers/customers.module').then(m => m.CustomersModule) },
+        ]
+    },
+
+    //KYC route
+    {
+        path: '',
+        component: KycRequestComponent,
+        data: {
+            layout: 'classic'
+        },
+        children: [
+            { path: 'kycList', loadChildren: () => import('app/modules/kyc/kyc-shared.module').then(m => m.KycSharedModule) },
         ]
     },
 ];
