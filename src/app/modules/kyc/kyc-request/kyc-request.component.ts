@@ -40,6 +40,18 @@ filteredStatus: any[];
       resp.subscribe(listkyc=>this.dataSource.data = listkyc as Ikyc[])
       //console.log(this.dataSource.data);
   }
+  public getAllConfirmedRequest(){
+   
+    let resp = this.kycservice.listKycRequest('confirmed');
+    resp.subscribe(listkyc=>this.dataSource.data = listkyc as Ikyc[])
+    //console.log(this.dataSource.data);
+}
+public getAllRejectedRequest(){
+   
+  let resp = this.kycservice.listKycRequest('rejected');
+  resp.subscribe(listkyc=>this.dataSource.data = listkyc as Ikyc[])
+  //console.log(this.dataSource.data);
+}
   applyFilter(filterValue: string){
     //const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
