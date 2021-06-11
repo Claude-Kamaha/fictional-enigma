@@ -11,12 +11,12 @@ import { Ikyc } from 'app/models/requestKyc';
   styleUrls: ['./kyc-request.component.scss']
 })
 export class KycRequestComponent implements OnInit {
-  @ViewChild(MatPaginator,{static:true}) paginator: MatPaginator; 
-  @ViewChild(MatSort,{static:true}) sort: MatSort;
+ @ViewChild(MatPaginator,{static:true}) paginator: MatPaginator;
+ @ViewChild(MatSort,{static:true}) sort: MatSort;
   Kyc_list: Ikyc[] = [];
    state: String = 'pending'|| 'confirmed' || 'rejected';
 displayedColumns: string[] =['username','request_status','level'];
-dataSource = new MatTableDataSource<Ikyc>(this.Kyc_list);
+dataSource : MatTableDataSource<Ikyc>;
 
 currentStatus: string;
 UsersFilteredByStatus: any[];
@@ -24,30 +24,34 @@ UsersFilteredByStatus: any[];
 filteredStatus: any[];
 
 
-  
-  constructor(private kycservice:KycServiceService) { 
+
+  constructor(private kycservice:KycServiceService) {
     this.currentStatus = 'all';
   }
 
   ngOnInit(): void {
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
-    this.getAllPendingRequest()
+    //this.dataSource.paginator = this.paginator;
+    //this.dataSource.sort = this.sort;
+   this.getAllPendingRequest()
   }
   public getAllPendingRequest(){
-   
-      let resp = this.kycservice.listKycRequest('pending');
-      resp.subscribe(listkyc=>this.dataSource.data = listkyc as Ikyc[])
+    this.kycservice.listKycRequest('pending').subscribe((response: any) => {
+        console.log(response.data);
+                this.dataSource = new MatTableDataSource(response.data);
+      });
+      //let resp = this.kycservice.listKycRequest('pending');
+      //resp.subscribe(listkyc=>this.dataSource.data = listkyc as Ikyc[]);
+      //this.dataSource = new MatTableDataSource(listkyc.data);
       //console.log(this.dataSource.data);
   }
   public getAllConfirmedRequest(){
-   
+
     let resp = this.kycservice.listKycRequest('confirmed');
     resp.subscribe(listkyc=>this.dataSource.data = listkyc as Ikyc[])
     //console.log(this.dataSource.data);
 }
 public getAllRejectedRequest(){
-   
+
   let resp = this.kycservice.listKycRequest('rejected');
   resp.subscribe(listkyc=>this.dataSource.data = listkyc as Ikyc[])
   //console.log(this.dataSource.data);
