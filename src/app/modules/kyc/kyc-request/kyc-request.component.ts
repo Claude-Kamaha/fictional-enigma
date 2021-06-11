@@ -11,23 +11,23 @@ import { Ikyc } from 'app/models/requestKyc';
   styleUrls: ['./kyc-request.component.scss']
 })
 export class KycRequestComponent implements OnInit {
- @ViewChild(MatPaginator,{static:true}) paginator: MatPaginator;
- @ViewChild(MatSort,{static:true}) sort: MatSort;
+  @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
+  @ViewChild(MatSort, { static: true }) sort: MatSort;
   Kyc_list: Ikyc[] = [];
-   state: String;
-displayedColumns: string[] =['username','request_status','level'];
-dataSource : MatTableDataSource<Ikyc>;
+  state: String;
+  displayedColumns: string[] = ['username', 'request_status', 'level'];
+  dataSource: MatTableDataSource<Ikyc>;
 
-currentStatus: string;
-UsersFilteredByStatus: any[];
+  currentStatus: string;
+  UsersFilteredByStatus: any[];
   Status: any[];
-filteredStatus: any[];
+  filteredStatus: any[];
 
 
 
 
 
-  constructor(private kycservice:KycServiceService) {
+  constructor(private kycservice: KycServiceService) {
     this.currentStatus = 'all';
   }
 
@@ -35,42 +35,43 @@ filteredStatus: any[];
     //this.dataSource.paginator = this.paginator;
     //this.dataSource.sort = this.sort;
 
-   if (this.state= 'pending'){
-    this.getAllPendingRequest()
-}else if (this.state = 'rejected'){
-  this.getAllRejectedRequest()
-}
-else if (this.state = 'confirmed'){
-  this.getAllConfirmedRequest()
-}
+    //    if (this.state= 'pending'){
+    //     this.getAllPendingRequest()
+    // }else if (this.state = 'rejected'){
+    //   this.getAllRejectedRequest()
+    // }
+    // else if (this.state = 'confirmed'){
+    //   this.getAllConfirmedRequest()
+    // }
+
+    this.getAllRequestByStatus('confirmed');
   }
 
-  public getAllPendingRequest(){
-    this.kycservice.listKycRequest('pending').subscribe((response: any) => {
-        console.log(response.data);
-                this.dataSource = new MatTableDataSource(response.data);
-      });
-      //let resp = this.kycservice.listKycRequest('pending');
-      //resp.subscribe(listkyc=>this.dataSource.data = listkyc as Ikyc[]);
-      //this.dataSource = new MatTableDataSource(listkyc.data);
-      //console.log(this.dataSource.data);
+  onKycChange(event) {
+    console.log(event.value)
+    this.getAllRequestByStatus(event.value);
   }
-  public getAllConfirmedRequest(){
 
-    this.kycservice.listKycRequest('confirmed').subscribe((response: any) => {
-        console.log(response.data);
-                this.dataSource = new MatTableDataSource(response.data);
-            });
-}
-public getAllRejectedRequest(){
+  public getAllRequestByStatus(status: string) {
+    this.kycservice.listKycRequest(status).subscribe((response: any) => {
+      console.log(response.data);
+      this.dataSource = new MatTableDataSource(response.data);
+    });
+    //let resp = this.kycservice.listKycRequest('pending');
+    //resp.subscribe(listkyc=>this.dataSource.data = listkyc as Ikyc[]);
+    //this.dataSource = new MatTableDataSource(listkyc.data);
+    //console.log(this.dataSource.data);
+  }
+  
+  public getAllRejectedRequest() {
 
     this.kycservice.listKycRequest('rejected').subscribe((response: any) => {
-        console.log(response.data);
-                this.dataSource = new MatTableDataSource(response.data);
-            });
-  //console.log(this.dataSource.data);
-}
-  applyFilter(filterValue: string){
+      console.log(response.data);
+      this.dataSource = new MatTableDataSource(response.data);
+    });
+    //console.log(this.dataSource.data);
+  }
+  applyFilter(filterValue: string) {
     //const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }

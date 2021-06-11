@@ -1,19 +1,23 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { ApplicationInitStatus, Injectable } from '@angular/core';
+import { Ikyc } from 'app/modules/customers/customers.component';
+import { Observable } from 'rxjs';
+import { catchError } from 'rxjs/operators';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class KycServiceService {
   token : string;
- 
+  
 
   constructor(private httpclient: HttpClient) {
     this.token = localStorage.getItem('token');
    }
 
 
-  public listKycRequest(status: string){
+  public listKycRequest(status: string): Observable<Ikyc[]> {
     const httpOptions = {
       headers: new HttpHeaders({
           'Content-Type': 'application/json',
@@ -25,11 +29,12 @@ export class KycServiceService {
   
     }
     const Url = `https://sandbox-nellys-coin.ejaraapis.xyz/api/v1/customer/find-all-kyc-requests`+'?status='+status;
-return this.httpclient.get<any>(Url,httpOptions)
+return this.httpclient.get<Ikyc[]>(Url,httpOptions)
 
 }
+/*
 
-public getKycById(){
+public getKycById(id:number){
   const httpOptions = {
     headers: new HttpHeaders({
         'Content-Type': 'application/json',
@@ -49,4 +54,6 @@ public getKycById(){
   const Url = `https://sandbox-nellys-coin.ejaraapis.xyz/api/v1/customer/find-customer-kyc-info`//+?requestId=1;
   return this.httpclient.get<any>(Url,httpOptions,)
 }
+*/
+
 }

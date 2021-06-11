@@ -75,15 +75,16 @@ export const appRoutes: Route[] = [
             { path: 'kycList', loadChildren: () => import('app/modules/kyc/kyc-shared.module').then(m => m.KycSharedModule) },
         ]
     },
-    {
-        path: '',
-        component: KycInfoComponent,
 
+     //KYC iNFO
+     {
+        path: '',
+        component:  KycInfoComponent,
         data: {
             layout: 'classic'
         },
         children: [
-            { path: 'kycInfo', loadChildren: () => import('app/modules/kyc/kyc-shared.module').then(m => m.KycSharedModule) },
+            { path: 'kycList/:id', loadChildren: () => import('app/modules/kyc/kyc-shared.module').then(m => m.KycSharedModule) },
         ]
     },
 ];
