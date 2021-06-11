@@ -7,7 +7,11 @@ const KycRequestRoutes: Route[] = [
   {
       path     : '',
       component: KycRequestComponent
-  }
+  },
+  {
+    path     : '',
+    component: KycInfoComponent
+}
 ];
 
 

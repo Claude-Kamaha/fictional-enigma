@@ -12,6 +12,15 @@
     <mat-label>Filter</mat-label>
     <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Seach Username">
 </mat-form-field>
+<mat-form-field appearance="fill">
+    <mat-label>Status</mat-label>
+    <mat-select [(value)]="state">
+
+      <mat-option value="confirmed">confirmed</mat-option>
+      <mat-option value="rejected">rejected</mat-option>
+      <mat-option value="pending">pending</mat-option>
+    </mat-select>
+  </mat-form-field>
 
 </div>
 <div class="mat-elevation-z8">

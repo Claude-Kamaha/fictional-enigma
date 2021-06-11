@@ -5,6 +5,7 @@ import { LayoutComponent } from 'app/layout/layout.component';
 import { InitialDataResolver } from 'app/app.resolvers';
 import { CustomersComponent } from './modules/customers/customers.component';
 import { KycRequestComponent } from './modules/kyc/kyc-request/kyc-request.component';
+import { KycInfoComponent } from './modules/kyc/kyc-info/kyc-info.component';
 
 // @formatter:off
 // tslint:disable:max-line-length
@@ -72,6 +73,17 @@ export const appRoutes: Route[] = [
         },
         children: [
             { path: 'kycList', loadChildren: () => import('app/modules/kyc/kyc-shared.module').then(m => m.KycSharedModule) },
+        ]
+    },
+    {
+        path: '',
+        component: KycInfoComponent,
+
+        data: {
+            layout: 'classic'
+        },
+        children: [
+            { path: 'kycInfo', loadChildren: () => import('app/modules/kyc/kyc-shared.module').then(m => m.KycSharedModule) },
         ]
     },
 ];

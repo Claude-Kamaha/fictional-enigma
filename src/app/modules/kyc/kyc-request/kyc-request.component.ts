@@ -14,7 +14,7 @@ export class KycRequestComponent implements OnInit {
  @ViewChild(MatPaginator,{static:true}) paginator: MatPaginator;
  @ViewChild(MatSort,{static:true}) sort: MatSort;
   Kyc_list: Ikyc[] = [];
-   state: String = 'pending'|| 'confirmed' || 'rejected';
+   state: String;
 displayedColumns: string[] =['username','request_status','level'];
 dataSource : MatTableDataSource<Ikyc>;
 
@@ -25,6 +25,8 @@ filteredStatus: any[];
 
 
 
+
+
   constructor(private kycservice:KycServiceService) {
     this.currentStatus = 'all';
   }
@@ -32,8 +34,17 @@ filteredStatus: any[];
   ngOnInit(): void {
     //this.dataSource.paginator = this.paginator;
     //this.dataSource.sort = this.sort;
-   this.getAllPendingRequest()
+
+   if (this.state= 'pending'){
+    this.getAllPendingRequest()
+}else if (this.state = 'rejected'){
+  this.getAllRejectedRequest()
+}
+else if (this.state = 'confirmed'){
+  this.getAllConfirmedRequest()
+}
   }
+
   public getAllPendingRequest(){
     this.kycservice.listKycRequest('pending').subscribe((response: any) => {
         console.log(response.data);
@@ -46,14 +57,17 @@ filteredStatus: any[];
   }
   public getAllConfirmedRequest(){
 
-    let resp = this.kycservice.listKycRequest('confirmed');
-    resp.subscribe(listkyc=>this.dataSource.data = listkyc as Ikyc[])
-    //console.log(this.dataSource.data);
+    this.kycservice.listKycRequest('confirmed').subscribe((response: any) => {
+        console.log(response.data);
+                this.dataSource = new MatTableDataSource(response.data);
+            });
 }
 public getAllRejectedRequest(){
 
-  let resp = this.kycservice.listKycRequest('rejected');
-  resp.subscribe(listkyc=>this.dataSource.data = listkyc as Ikyc[])
+    this.kycservice.listKycRequest('rejected').subscribe((response: any) => {
+        console.log(response.data);
+                this.dataSource = new MatTableDataSource(response.data);
+            });
   //console.log(this.dataSource.data);
 }
   applyFilter(filterValue: string){

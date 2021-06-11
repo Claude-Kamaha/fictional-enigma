@@ -26,6 +26,7 @@ import { KycRequestComponent } from './modules/kyc/kyc-request/kyc-request.compo
 import { DataComponent } from './data/data.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
 //import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 const routerConfig: ExtraOptions = {
@@ -60,6 +61,7 @@ const routerConfig: ExtraOptions = {
         MatIconModule,
         MatFormFieldModule,
         MatInputModule,
+        MatSelectModule ,
         //NgxChartsModule,
         // Core
         CoreModule,
