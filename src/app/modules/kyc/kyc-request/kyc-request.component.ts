@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { Router } from '@angular/router';
 import { KycServiceService } from 'app/core/kyc/kyc-service.service';
 import { Ikyc } from 'app/models/requestKyc';
 
@@ -27,7 +28,8 @@ export class KycRequestComponent implements OnInit {
 
 
 
-  constructor(private kycservice: KycServiceService) {
+  constructor(private kycservice: KycServiceService,
+    private router: Router) {
     this.currentStatus = 'all';
   }
 
@@ -63,18 +65,14 @@ export class KycRequestComponent implements OnInit {
     //console.log(this.dataSource.data);
   }
   
-  public getAllRejectedRequest() {
 
-    this.kycservice.listKycRequest('rejected').subscribe((response: any) => {
-      console.log(response.data);
-      this.dataSource = new MatTableDataSource(response.data);
-    });
-    //console.log(this.dataSource.data);
-  }
   applyFilter(filterValue: string) {
     //const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
-
+  onSelect(row){
+    console.log(row)
+    this.router.navigate(['/kycList', row.request_id])
+  }
 }
 //Angular 9 Tutorial For Beginners #65- HTTP Params
