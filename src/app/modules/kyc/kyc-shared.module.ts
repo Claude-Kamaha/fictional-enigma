@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { Route, RouterModule } from '@angular/router';
 import { KycRequestComponent } from './kyc-request/kyc-request.component';
 import { KycInfoComponent } from './kyc-info/kyc-info.component';
+import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
 const KycRequestRoutes: Route[] = [
   {
       path     : '',
@@ -22,7 +24,9 @@ const KycRequestRoutes: Route[] = [
   ],
   imports: [
     RouterModule.forChild(KycRequestRoutes),
-    CommonModule
+    CommonModule,
+    MatCardModule,
+    MatButtonModule,
   ]
 })
 export class KycSharedModule { }

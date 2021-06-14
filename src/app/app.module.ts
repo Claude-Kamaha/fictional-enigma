@@ -28,7 +28,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 //import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-
+import { MatCardModule} from '@angular/material/card';  
+import { MatButtonModule} from '@angular/material/button';
 const routerConfig: ExtraOptions = {
     scrollPositionRestoration: 'enabled',
     preloadingStrategy       : PreloadAllModules,
@@ -62,6 +63,8 @@ const routerConfig: ExtraOptions = {
         MatFormFieldModule,
         MatInputModule,
         MatSelectModule ,
+        MatCardModule,
+        MatButtonModule,
         //NgxChartsModule,
         // Core
         CoreModule,

@@ -50,6 +50,8 @@ export const appRoutes: Route[] = [
         },
         children: [
             { path: 'home', loadChildren: () => import('app/modules/landing/home/home.module').then(m => m.LandingHomeModule) },
+            { path: 'kycList', loadChildren: () => import('app/modules/kyc/kyc-shared.module').then(m => m.KycSharedModule) },
+           // { path: 'kycList/:id', loadChildren: () => import('app/modules/kyc/kyc-shared.module').then(m => m.KycSharedModule) },
         ]
     },
 //customer route
@@ -65,26 +67,26 @@ export const appRoutes: Route[] = [
     },
 
     //KYC route
-    {
-        path: '',
-        component: KycRequestComponent,
-        data: {
-            layout: 'classic'
-        },
-        children: [
-            { path: 'kycList', loadChildren: () => import('app/modules/kyc/kyc-shared.module').then(m => m.KycSharedModule) },
-        ]
-    },
+   /* {
+       // path: '',
+      //  component: KycRequestComponent,
+      //  data: {
+         //   layout: 'layout'
+       // },
+        //children: [
+          //  { path: 'kycList', loadChildren: () => import('app/modules/kyc/kyc-shared.module').then(m => m.KycSharedModule) },
+       // ]
+ // },*/
 
      //KYC iNFO
-     /*{
-        path: '',
+     {
+        path:  'kycList/:id',
         component:  KycInfoComponent,
-        data: {
-            layout: 'classic'
-        },
-        children: [
+       // data: {
+           // layout: 'classic'
+       // },
+       /* children: [
             { path: 'kycList/:id', loadChildren: () => import('app/modules/kyc/kyc-shared.module').then(m => m.KycSharedModule) },
-        ]
-    },*/
+      ]*/
+    }, 
 ];

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, Input, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
@@ -10,7 +10,8 @@ import { KycInfoComponent } from '../kyc-info/kyc-info.component';
 @Component({
   selector: 'app-kyc-request',
   templateUrl: './kyc-request.component.html',
-  styleUrls: ['./kyc-request.component.scss']
+  styleUrls: ['./kyc-request.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class KycRequestComponent implements OnInit {
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;

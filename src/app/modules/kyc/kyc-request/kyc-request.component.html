@@ -1,28 +1,28 @@
 <div>
+<div>
      <h1>
         WELCOME TO Customer KYC
     </h1>
 </div>
-&nbsp;&nbsp;
-&nbsp;&nbsp;
 
-<div class="filters" fxLayout="column" fxLayoutAlign="center center"
-                 fxLayout.gt-xs="row" fxLayoutAlign.gt-xs="space-between center">
-<mat-form-field>
+
+<div class="filters" class="color" >
+  <div >
+<mat-form-field class="mat-form-field-filter">
     <mat-label>Filter</mat-label>
     <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Seach Username">
 </mat-form-field>
   <!-- Select a status -->
-<mat-form-field appearance="fill" >
+<mat-form-field appearance="fill" class= "flex-container" >
     <mat-label>Status</mat-label>
  
-    <mat-select (selectionChange)="onKycChange($event)">
+    <mat-select (selectionChange)="onKycChange($event)" >
       <mat-option value="confirmed">confirmed</mat-option>
       <mat-option value="rejected">rejected</mat-option>
       <mat-option value="pending">pending</mat-option>
     </mat-select>
   </mat-form-field>
-
+</div>
 </div>
 <div class="mat-elevation-z8">
     <table mat-table  [dataSource]='dataSource' class="full-width-table" matSort aria-label="Elements" >
@@ -53,4 +53,5 @@
     </table>
 
     <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+</div>
 </div>

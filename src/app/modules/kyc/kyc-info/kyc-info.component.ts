@@ -20,11 +20,12 @@ public customerId;
   ngOnInit(): void {
   let id = parseInt(this._Activatedroute.snapshot.paramMap.get('id'));
   //console.log( this._Activatedroute.snapshot.params['id']);
+ /*Method 2
   this._Activatedroute.params.subscribe( params =>{
     console.log(params);
     console.log(params['id'])}
-    )
-    this.getKyc(1);
+    )*/
+    this.getKyc(id);
   
 }
 getKyc(id: number): void {

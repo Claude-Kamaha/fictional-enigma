@@ -1,11 +1,24 @@
-{{customerlist?.last_name }} Infos
-<p>First_name: {{customerlist?.first_name}}</p>
-<p>status: {{customerlist?.request_status}}</p>
-<p>level: {{customerlist?.level}}</p>
-<p>name: {{customerlist?.name}}</p>
-<p>amount_max_daily: {{customerlist?.amount_max_daily}}</p>
-<p>amount_max_weekly: {{customerlist?.amount_max_weekly}}</p>
-<p>status: {{customerlist?.particulars[1]?.document_is_valid}}</p>
-<p>image: {{customerlist?.particulars[1]?.image}}</p>
-<p>date: </p>
-<button mat-flat-button color="warn">Update status</button>
+
+<mat-card class="example-card">
+    <mat-card-header>
+      
+      <mat-card-title>{{customerlist?.last_name }} Information</mat-card-title>
+      
+    </mat-card-header>
+    <img mat-card-image src="{{customerlist?.particulars[1]?.image}}" alt= {{customerlist?.name}}>
+    <mat-card-content>
+      
+        <p>First_name: {{customerlist?.first_name}}</p>
+        <p>status: {{customerlist?.request_status}}</p>
+        <p>level: {{customerlist?.level}}</p>
+        <p>name: {{customerlist?.name}}</p>
+        <p>amount_max_daily: {{customerlist?.amount_max_daily}}</p>
+        <p>amount_max_weekly: {{customerlist?.amount_max_weekly}}</p>
+        <p>status: {{customerlist?.particulars[1]?.document_is_valid}}</p>
+      
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-button>Update status</button>
+     
+    </mat-card-actions>
+  </mat-card>
