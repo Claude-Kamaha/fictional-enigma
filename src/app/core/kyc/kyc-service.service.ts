@@ -55,7 +55,7 @@ public getKycById(id:number){
   return this.httpclient.get<any>(Url,httpOptions,)
 }
 */
-getKycById(id: number): Observable<Ikyc | undefined> {
+getKycById(id: number): Observable<Ikyc> {
   const httpOptions = {
     headers: new HttpHeaders({
         'Content-Type': 'application/json',
@@ -66,7 +66,7 @@ getKycById(id: number): Observable<Ikyc | undefined> {
     })
   }
   const Url = `https://sandbox-nellys-coin.ejaraapis.xyz/api/v1/customer/find-customer-kyc-info`+'?requestId='+id;
-  return this.httpclient.get<any>(Url,httpOptions)
+  return this.httpclient.get<Ikyc>(Url,httpOptions)
     
 }
 private handleError(err: HttpErrorResponse): Observable<never> {

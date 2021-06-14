@@ -30,21 +30,24 @@
       <ng-container matColumnDef="username">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Username</th>
        
-        <td mat-cell *matCellDef="let row"> <a [routerLink]="['/kycList', row.request_Id]"> {{row.username}}</a></td>
+        <td mat-cell *matCellDef="let row">  {{row.username}}</td>
       </ng-container>
 
       <!--Status Column -->
       <ng-container matColumnDef="request_status">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Status</th>
         
-        <td  mat-cell *matCellDef="let row" (click)=onSelect(row)>{{row.request_status}}</td>
+        <td  mat-cell *matCellDef="let row" >{{row.request_status}}</td>
       </ng-container>
         <!-- Name Column -->
         <ng-container matColumnDef="level">
             <th mat-header-cell *matHeaderCellDef mat-sort-header>Level</th>
             <td mat-cell *matCellDef="let row">{{row.level}}</td>
           </ng-container>
-
+          <ng-container matColumnDef="demo">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>View more ...</th>
+            <td mat-cell *matCellDef="let row" (click)=onSelect(row)><mat-icon aria-hidden="false" aria-label="Example home icon">launch</mat-icon></td>
+          </ng-container>
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>

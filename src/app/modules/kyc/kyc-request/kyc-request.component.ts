@@ -1,10 +1,11 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { KycServiceService } from 'app/core/kyc/kyc-service.service';
 import { Ikyc } from 'app/models/requestKyc';
+import { KycInfoComponent } from '../kyc-info/kyc-info.component';
 
 @Component({
   selector: 'app-kyc-request',
@@ -14,9 +15,10 @@ import { Ikyc } from 'app/models/requestKyc';
 export class KycRequestComponent implements OnInit {
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   @ViewChild(MatSort, { static: true }) sort: MatSort;
+ 
   Kyc_list: Ikyc[] = [];
   state: String;
-  displayedColumns: string[] = ['username', 'request_status', 'level'];
+  displayedColumns: string[] = ['username', 'request_status', 'level','demo'];
   dataSource: MatTableDataSource<Ikyc>;
 
   currentStatus: string;
@@ -50,13 +52,13 @@ export class KycRequestComponent implements OnInit {
   }
 
   onKycChange(event) {
-    console.log(event.value)
+   // console.log(event.value)
     this.getAllRequestByStatus(event.value);
   }
 
   public getAllRequestByStatus(status: string) {
     this.kycservice.listKycRequest(status).subscribe((response: any) => {
-      console.log(response.data);
+      //console.log(response.data);
       this.dataSource = new MatTableDataSource(response.data);
     });
     //let resp = this.kycservice.listKycRequest('pending');
@@ -71,8 +73,10 @@ export class KycRequestComponent implements OnInit {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
   onSelect(row){
-    console.log(row)
-    this.router.navigate(['/kycList', row.request_id])
+    console.log(row.request_id)
+    this.router.navigate(['/kycList', row.request_id]);
+    
+
   }
 }
 //Angular 9 Tutorial For Beginners #65- HTTP Params

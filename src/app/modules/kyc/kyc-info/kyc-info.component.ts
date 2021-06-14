@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { KycServiceService } from 'app/core/kyc/kyc-service.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Ikyc } from 'app/models/requestKyc';
@@ -10,6 +10,7 @@ import { Ikyc } from 'app/models/requestKyc';
 export class KycInfoComponent implements OnInit {
   errorMessage: any;
   customerlist: Ikyc;
+  @Input() row;
 
   constructor(private kycservice: KycServiceService,
     private _router:Router,
@@ -23,10 +24,12 @@ public customerId;
   
 }
 getKyc(id: number): void {
-  this.kycservice.getKycById(id).subscribe( data => {
-    this.customerlist=data;
-   
-    console.log(this.customerlist)
+  this.kycservice.getKycById(id).subscribe( (response: any) => {
+    console.log(response.data)
+    
+    this.customerlist=response.data;
+  //  console.log(this.row);
+    console.log(this.customerlist.first_name);
     //ext: customerlist => this.customerlist = customerlist,
     //error: err => this.errorMessage = err
   } );
