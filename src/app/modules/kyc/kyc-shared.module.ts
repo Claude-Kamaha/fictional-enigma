@@ -9,7 +9,7 @@ const KycRequestRoutes: Route[] = [
       component: KycRequestComponent
   },
   {
-    path     : '',
+    path     : '/:id',
     component: KycInfoComponent
 }
 ];

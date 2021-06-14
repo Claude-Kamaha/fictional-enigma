@@ -1,10 +1,11 @@
-{{customerlist.last_name }} Infos
-<p>First_name: {{customerlist.first_name}}</p>
-<p>status: {{customerlist.request_status}}</p>
-<p>level: {{customerlist.level}}</p>
-<p>name: {{customerlist.name}}</p>
-<p>amount_max_daily: {{customerlist.amount_max_daily}}</p>
-<p>amount_max_weekly: {{customerlist.amount_max_weekly}}</p>
-<p>status: {{customerlist.particulars[1].document_is_valid}}</p>
-<p>image: {{customerlist.particulars[1].image}}</p>
+{{customerlist?.last_name }} Infos
+<p>First_name: {{customerlist?.first_name}}</p>
+<p>status: {{customerlist?.request_status}}</p>
+<p>level: {{customerlist?.level}}</p>
+<p>name: {{customerlist?.name}}</p>
+<p>amount_max_daily: {{customerlist?.amount_max_daily}}</p>
+<p>amount_max_weekly: {{customerlist?.amount_max_weekly}}</p>
+<p>status: {{customerlist?.particulars[1]?.document_is_valid}}</p>
+<p>image: {{customerlist?.particulars[1]?.image}}</p>
 <p>date: </p>
+<button mat-flat-button color="warn">Update status</button>

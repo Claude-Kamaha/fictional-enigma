@@ -18,8 +18,12 @@ export class KycInfoComponent implements OnInit {
   
 public customerId;
   ngOnInit(): void {
-  let id = parseInt(this._Activatedroute.snapshot.paramMap.get('requestId'));
-  console.log(id)
+  let id = parseInt(this._Activatedroute.snapshot.paramMap.get('id'));
+  //console.log( this._Activatedroute.snapshot.params['id']);
+  this._Activatedroute.params.subscribe( params =>{
+    console.log(params);
+    console.log(params['id'])}
+    )
     this.getKyc(1);
   
 }

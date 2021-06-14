@@ -73,7 +73,7 @@ export class KycRequestComponent implements OnInit {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
   onSelect(row){
-    console.log(row.request_id)
+    //console.log(row.request_id)
     this.router.navigate(['/kycList', row.request_id]);
     
 

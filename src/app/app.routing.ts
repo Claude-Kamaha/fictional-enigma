@@ -77,7 +77,7 @@ export const appRoutes: Route[] = [
     },
 
      //KYC iNFO
-     {
+     /*{
         path: '',
         component:  KycInfoComponent,
         data: {
@@ -86,5 +86,5 @@ export const appRoutes: Route[] = [
         children: [
             { path: 'kycList/:id', loadChildren: () => import('app/modules/kyc/kyc-shared.module').then(m => m.KycSharedModule) },
         ]
-    },
+    },*/
 ];
