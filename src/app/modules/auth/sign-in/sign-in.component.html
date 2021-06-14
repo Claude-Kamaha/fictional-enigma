@@ -41,7 +41,7 @@
                 <!-- Password field -->
                 <mat-form-field appearance="outline">
                     <mat-label>Password</mat-label>
-                    <input id="password" matInput type="password" [formControlName]="'password'" #password>
+                    <input id="password" matInput type="password" [formControlName]="'password'" autocomplete="off" #password>
 
                     <button mat-icon-button type="button"
                         (click)="password.type === 'password' ? password.type = 'text' : password.type = 'password'"

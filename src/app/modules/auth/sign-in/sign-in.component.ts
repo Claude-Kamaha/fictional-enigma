@@ -69,6 +69,7 @@ export class AuthSignInComponent implements OnInit {
                 
                     .subscribe(
                         data =>{
+                           
                    localStorage.setItem('token',data.token);                 
                     if (data.responsecode !== "login_ok") {
                         this.snackBar.open('The provided username/email and password combination does not match any user in the database', 'OK', {
@@ -89,6 +90,7 @@ export class AuthSignInComponent implements OnInit {
                     this._router.navigateByUrl(redirectURL);
                 },
                 error => {
+                    console.log(error)
                     this.isDisabled = false;
                     this.signInNgForm.resetForm();
                     this.snackBar.open('An error occurred. Please try again later', 'OK', {

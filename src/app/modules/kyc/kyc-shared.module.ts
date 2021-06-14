@@ -5,6 +5,11 @@ import { KycRequestComponent } from './kyc-request/kyc-request.component';
 import { KycInfoComponent } from './kyc-info/kyc-info.component';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
+import { MatTableModule } from '@angular/material/table';
+import { MatIconModule } from '@angular/material/icon';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
 const KycRequestRoutes: Route[] = [
   {
       path     : '',
@@ -27,6 +32,11 @@ const KycRequestRoutes: Route[] = [
     CommonModule,
     MatCardModule,
     MatButtonModule,
+    MatTableModule,
+    MatIconModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSelectModule ,
   ]
 })
 export class KycSharedModule { }

@@ -84,4 +84,21 @@ private handleError(err: HttpErrorResponse): Observable<never> {
   console.error(errorMessage);
   return throwError(errorMessage);
 }
+
+public updateKycStatus(status: string): Observable<Ikyc[]> {
+  const httpOptions = {
+    headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'client-id': '8d90927083',
+        'api-key': 'CeL1J]kPJSn]&@$Rg9kk0qbIL',
+        'Authorization': `Bearer ${this.token}`
+        
+    })
+
+  }
+  const Url = `https://sandbox-nellys-coin.ejaraapis.xyz/api/v1/customer/find-all-kyc-requests`+'?status='+status;
+//  https://sandbox-nellys-coin.ejaraapis.xyz/api/v1/customer/confirm-kyc-info?status=confirmed&requestId=1&message=every doc is ok
+return this.httpclient.put<Ikyc[]>(Url,httpOptions)
+
+}
 }

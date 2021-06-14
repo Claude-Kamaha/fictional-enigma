@@ -49,7 +49,7 @@ export class KycRequestComponent implements OnInit {
     //   this.getAllConfirmedRequest()
     // }
 
-    this.getAllRequestByStatus('confirmed');
+    this.getAllRequestByStatus('all');
   }
 
   onKycChange(event) {
@@ -59,7 +59,7 @@ export class KycRequestComponent implements OnInit {
 
   public getAllRequestByStatus(status: string) {
     this.kycservice.listKycRequest(status).subscribe((response: any) => {
-      //console.log(response.data);
+      console.log(response.data);
       this.dataSource = new MatTableDataSource(response.data);
     });
     //let resp = this.kycservice.listKycRequest('pending');

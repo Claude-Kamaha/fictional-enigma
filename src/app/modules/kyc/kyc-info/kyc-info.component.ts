@@ -10,6 +10,8 @@ import { Ikyc } from 'app/models/requestKyc';
 export class KycInfoComponent implements OnInit {
   errorMessage: any;
   customerlist: Ikyc;
+  public disabled = true;
+  selected = 'reject';
   @Input() row;
 
   constructor(private kycservice: KycServiceService,
@@ -39,5 +41,11 @@ getKyc(id: number): void {
     //error: err => this.errorMessage = err
   } );
 }
-
+public toggleDisabled(): void {
+  this.disabled = !this.disabled;
+}
+onKycChange(event) {
+  // console.log(event.value)
+  // this.getAllRequestByStatus(event.value);
+ }
 }
