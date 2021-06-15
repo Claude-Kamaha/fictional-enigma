@@ -34,6 +34,7 @@ public customerId;
     console.log(params['id'])}
     )*/
     this.getKyc(this.id);
+    //this.kycservice.updateKycStatus(this.id,this.custreq,this.message) .subscribe(data => console.log(data));
   
 }
 getKyc(id: number): void {
@@ -62,7 +63,7 @@ onSubmit(): void {
   // Process checkout data here
   //onKycChange(event)
   console.log(this.message)
-  this.kycservice.updateKycStatus(this.id,this.custreq,this.message,)
+  this.kycservice.updateKycStatus(this.id,this.custreq,this.message).subscribe(data => console.log(data));
  
 }
 }

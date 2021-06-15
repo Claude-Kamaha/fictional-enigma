@@ -9,7 +9,7 @@
     <mat-card-content>
       
         <p>First_name: {{customerlist?.first_name}}</p>
-        <p [(ngModel)]= "custreq" name= "custreq">status: {{customerlist?.request_status}}</p>
+        <p [(ngModel)]= "custreq" name= "custreq" ngDefaultControl>status: {{customerlist?.request_status}}</p>
         <p>level: {{customerlist?.level}}</p>
         <p>name: {{customerlist?.name}}</p>
         <p>amount_max_daily: {{customerlist?.amount_max_daily}}</p>
@@ -22,14 +22,15 @@
      
     </mat-card-actions>
   </mat-card>
-  <mat-form-field appearance="fill">
-    <mat-label>Switch to what status</mat-label>
-    <mat-select [disabled]="disabled" [(value)]="selected" (selectionChange)="onKycChange($event)">
-        <mat-option value="reject">Reject</mat-option>
-        <mat-option value="confirm"> Confirm</mat-option>
-       </mat-select>
-  </mat-form-field>
+  
   <form (ngSubmit)="onSubmit()">
+    <mat-form-field appearance="fill">
+      <mat-label>Switch to what status</mat-label>
+      <mat-select [disabled]="disabled" [(value)]="selected" (selectionChange)="onKycChange($event)">
+          <mat-option value="rejected">Reject</mat-option>
+          <mat-option value="confirmed"> Confirm</mat-option>
+         </mat-select>
+    </mat-form-field>
   <mat-form-field class="example-full-width">
     <mat-label>Leave a comment</mat-label>
     <textarea [(ngModel)]= "message" name= "message" matInput placeholder="Ex. It makes me feel..."></textarea>

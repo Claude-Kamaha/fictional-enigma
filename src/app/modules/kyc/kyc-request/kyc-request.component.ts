@@ -66,10 +66,7 @@ export class KycRequestComponent implements OnInit {
     this.dataSource.sort = this.sort;
       
     });
-    //let resp = this.kycservice.listKycRequest('pending');
-    //resp.subscribe(listkyc=>this.dataSource.data = listkyc as Ikyc[]);
-    //this.dataSource = new MatTableDataSource(listkyc.data);
-    //console.log(this.dataSource.data);
+   
   }
   
 
