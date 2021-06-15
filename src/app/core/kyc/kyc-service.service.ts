@@ -10,6 +10,9 @@ import { catchError, map } from 'rxjs/operators';
 })
 export class KycServiceService {
   token : string;
+  kyc: {
+    requestId: 904303
+  }
   
 
   constructor(private httpclient: HttpClient) {
@@ -21,8 +24,8 @@ export class KycServiceService {
     const httpOptions = {
       headers: new HttpHeaders({
           'Content-Type': 'application/json',
-          'client-id': '8d90927083',
-          'api-key': 'CeL1J]kPJSn]&@$Rg9kk0qbIL',
+          'client-id': 'a59cd6bf3f"',
+          'api-key': '2]2&J#jnL@P]%O0)&e!GwqtOT',
           'Authorization': `Bearer ${this.token}`
           
       })
@@ -59,14 +62,14 @@ getKycById(id: number): Observable<Ikyc> {
   const httpOptions = {
     headers: new HttpHeaders({
         'Content-Type': 'application/json',
-        'client-id': '8d90927083',
-        'api-key': 'CeL1J]kPJSn]&@$Rg9kk0qbIL',
+        'client-id': 'a59cd6bf3f',
+        'api-key': '2]2&J#jnL@P]%O0)&e!GwqtOT',
         'Authorization': `Bearer ${this.token}`
         
     })
   }
   const Url = `https://sandbox-nellys-coin.ejaraapis.xyz/api/v1/customer/find-customer-kyc-info`+'?requestId='+id;
-  return this.httpclient.get<Ikyc>(Url,httpOptions)
+  return this.httpclient.get<Ikyc>(Url,  httpOptions)
     
 }
 private handleError(err: HttpErrorResponse): Observable<never> {
@@ -85,20 +88,28 @@ private handleError(err: HttpErrorResponse): Observable<never> {
   return throwError(errorMessage);
 }
 
-public updateKycStatus(status: string): Observable<Ikyc[]> {
+public updateKycStatus(request_id: number,status: string,message:string): Observable<Ikyc[]> {
   const httpOptions = {
     headers: new HttpHeaders({
         'Content-Type': 'application/json',
-        'client-id': '8d90927083',
-        'api-key': 'CeL1J]kPJSn]&@$Rg9kk0qbIL',
+        'client-id': 'a59cd6bf3f',
+        'api-key': '2]2&J#jnL@P]%O0)&e!GwqtOT',
         'Authorization': `Bearer ${this.token}`
         
     })
 
   }
-  const Url = `https://sandbox-nellys-coin.ejaraapis.xyz/api/v1/customer/find-all-kyc-requests`+'?status='+status;
+
+ const body = {
+    requestId: request_id, 
+    status: status, 
+    message: message
+  }
+
+  const Url = `https://sandbox-nellys-coin.ejaraapis.xyz/api/v1/customer/confirm-kyc-info`;
 //  https://sandbox-nellys-coin.ejaraapis.xyz/api/v1/customer/confirm-kyc-info?status=confirmed&requestId=1&message=every doc is ok
-return this.httpclient.put<Ikyc[]>(Url,httpOptions)
+//return this.httpclient.put<any>(Url, body, httpOptions)
+return this.httpclient.put<any>(Url,body, httpOptions)
 
 }
 }

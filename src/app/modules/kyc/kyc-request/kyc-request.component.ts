@@ -50,6 +50,7 @@ export class KycRequestComponent implements OnInit {
     // }
 
     this.getAllRequestByStatus('all');
+    
   }
 
   onKycChange(event) {
@@ -61,6 +62,9 @@ export class KycRequestComponent implements OnInit {
     this.kycservice.listKycRequest(status).subscribe((response: any) => {
       console.log(response.data);
       this.dataSource = new MatTableDataSource(response.data);
+      this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
+      
     });
     //let resp = this.kycservice.listKycRequest('pending');
     //resp.subscribe(listkyc=>this.dataSource.data = listkyc as Ikyc[]);
@@ -74,7 +78,8 @@ export class KycRequestComponent implements OnInit {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
   onSelect(row){
-    //console.log(row.request_id)
+    console.log(row)
+    //this.router.navigate(['/kycList', row.request_id]);
     this.router.navigate(['/kycList', row.request_id]);
     
 

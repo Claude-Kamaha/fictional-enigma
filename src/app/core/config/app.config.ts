@@ -1,9 +1,10 @@
+import { HttpHeaders } from '@angular/common/http';
 import { Layout } from 'app/layout/layout.types';
 
 // Types
 export type Scheme = 'auto' | 'dark' | 'light';
 export type Theme = 'default' | string;
-
+ 
 /**
  * AppConfig interface. Update this interface to strictly type your config
  * object.
@@ -27,5 +28,16 @@ export const appConfig: AppConfig = {
     layout: 'classy',
     scheme: 'light',
     theme: 'default',
-    host: 'https://sandbox.nellys-coin.ejaraapis.xyz'
-};
+    host: 'https://sandbox-nellys-coin.ejaraapis.xyz'
+}
+
+export const httpOptions = {
+    headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'client-id': 'a59cd6bf3f',
+        'api-key': '2]2&J#jnL@P]%O0)&e!GwqtOT',
+        //'Authorization': `Bearer ${this.token}`
+        
+    })
+
+  }

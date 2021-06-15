@@ -28,8 +28,8 @@ export class AuthService {
     httpOptions = {
         headers: new HttpHeaders({
             'Content-Type': 'application/json',
-            'client-id': '8d90927083',
-            'api-key': 'CeL1J]kPJSn]&@$Rg9kk0qbIL'
+            'client-id': 'f62084f863',
+            'api-key': ')loH3Khh3@W72AB4Su^Afhtlr'
         })
     };
     // -----------------------------------------------------------------------------------------------------
@@ -84,7 +84,7 @@ export class AuthService {
         }
 
         return this._httpClient.post<any>(`${appConfig.host}/api/v1/auth/login`, user, this.httpOptions).pipe(
-            tap(() => console.log('')),
+            tap((data) => console.log(data)),
             catchError(this.handleError<any>('send'))
         );
     }

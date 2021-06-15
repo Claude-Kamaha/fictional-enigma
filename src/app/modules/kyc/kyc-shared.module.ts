@@ -10,6 +10,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { FormsModule } from '@angular/forms';
 const KycRequestRoutes: Route[] = [
   {
       path     : '',
@@ -37,6 +39,8 @@ const KycRequestRoutes: Route[] = [
     MatFormFieldModule,
     MatInputModule,
     MatSelectModule ,
+    MatPaginatorModule,
+    FormsModule
   ]
 })
 export class KycSharedModule { }
