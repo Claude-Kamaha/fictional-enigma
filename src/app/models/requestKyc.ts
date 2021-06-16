@@ -21,3 +21,6 @@ export interface Particulars {
   image: string;
 
 }
+export interface Kyc{
+  
+}

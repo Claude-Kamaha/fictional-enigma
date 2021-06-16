@@ -1,6 +1,7 @@
 import { HttpClient, HttpErrorResponse, HttpHeaders, HttpParams } from '@angular/common/http';
 import { ApplicationInitStatus, Injectable } from '@angular/core';
 import { Ikyc } from 'app/models/requestKyc';
+import { environment } from 'environments/environment';
 import { Observable, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 
@@ -106,10 +107,10 @@ public updateKycStatus(request_id: number,status: string,message:string): Observ
     message: message
   }
 
-  const Url = `https://sandbox-nellys-coin.ejaraapis.xyz/api/v1/customer/confirm-kyc-info`;
+
 //  https://sandbox-nellys-coin.ejaraapis.xyz/api/v1/customer/confirm-kyc-info?status=confirmed&requestId=1&message=every doc is ok
 //return this.httpclient.put<any>(Url, body, httpOptions)
-return this.httpclient.put<any>(Url,body, httpOptions)
+return this.httpclient.put<any>(`${environment.baseUrl}/customer/confirm-kyc-info`,body, httpOptions)
 
 }
 }

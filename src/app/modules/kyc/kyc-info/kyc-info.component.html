@@ -2,19 +2,20 @@
 <mat-card class="example-card">
     <mat-card-header>
       
-      <mat-card-title>{{customerlist?.last_name }} Information</mat-card-title>
+      <mat-card-title>{{kycList?.last_name }} Information</mat-card-title>
       
     </mat-card-header>
-    <img mat-card-image src="{{customerlist?.particulars[1]?.image}}" alt= {{customerlist?.name}}>
+    <img mat-card-image src="{{kycList?.particulars[1]?.image}}" alt= {{kycList?.name}}>
     <mat-card-content>
+    
       
-        <p>First_name: {{customerlist?.first_name}}</p>
-        <p [(ngModel)]= "custreq" name= "custreq" ngDefaultControl>status: {{customerlist?.request_status}}</p>
-        <p>level: {{customerlist?.level}}</p>
-        <p>name: {{customerlist?.name}}</p>
-        <p>amount_max_daily: {{customerlist?.amount_max_daily}}</p>
-        <p>amount_max_weekly: {{customerlist?.amount_max_weekly}}</p>
-        <p>status: {{customerlist?.particulars[1]?.document_is_valid}}</p>
+        <p>First_name: {{kycList?.first_name}}</p>
+        <p [(ngModel)]= "custreq" name= "custreq" ngDefaultControl>status: {{kycList?.request_status}}</p>
+        <p>level: {{kycList?.level}}</p>
+        <p>name: {{kycList?.name}}</p>
+        <p>amount_max_daily: {{kycList?.amount_max_daily}}</p>
+        <p>amount_max_weekly: {{kycList?.amount_max_weekly}}</p>
+        <p>status: {{kycList?.particulars[1]?.document_is_valid}}</p>
       
     </mat-card-content>
     <mat-card-actions>
@@ -23,18 +24,24 @@
     </mat-card-actions>
   </mat-card>
   
-  <form (ngSubmit)="onSubmit()">
-    <mat-form-field appearance="fill">
+  <form   [formGroup]="kycUpdateForm" (ngSubmit)="onSubmit()">
+  <!--  <mat-form-field appearance="fill">
       <mat-label>Switch to what status</mat-label>
       <mat-select [disabled]="disabled" [(value)]="selected" (selectionChange)="onKycChange($event)">
           <mat-option value="rejected">Reject</mat-option>
           <mat-option value="confirmed"> Confirm</mat-option>
-         </mat-select>
+         </mat-select> 
     </mat-form-field>
+-->
+    <mat-label>firstName </mat-label>
+    <mat-form-field appearance="outline">
+      <input matInput  formControlName="firstName" name="firstName" >
+  </mat-form-field>
   <mat-form-field class="example-full-width">
     <mat-label>Leave a comment</mat-label>
-    <textarea [(ngModel)]= "message" name= "message" matInput placeholder="Ex. It makes me feel..."></textarea>
+    <textarea  name= "message"   formControlName="message" matInput placeholder="Ex. It makes me feel..."></textarea>
   </mat-form-field>
+  
   <button class="button" type="submit">Submit</button>
 </form>
   <button mat-button (click)="goBack()">BACK</button>

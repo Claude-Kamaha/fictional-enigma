@@ -11,7 +11,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatPaginatorModule } from '@angular/material/paginator';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 const KycRequestRoutes: Route[] = [
   {
       path     : '',
@@ -40,7 +40,8 @@ const KycRequestRoutes: Route[] = [
     MatInputModule,
     MatSelectModule ,
     MatPaginatorModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule,
   ]
 })
 export class KycSharedModule { }

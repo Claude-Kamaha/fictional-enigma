@@ -30,6 +30,7 @@ import { MatSelectModule } from '@angular/material/select';
 //import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { MatCardModule} from '@angular/material/card';  
 import { MatButtonModule} from '@angular/material/button';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 const routerConfig: ExtraOptions = {
     scrollPositionRestoration: 'enabled',
     preloadingStrategy       : PreloadAllModules,
@@ -76,7 +77,8 @@ const routerConfig: ExtraOptions = {
         MarkdownModule.forRoot({}),
 
         MatSortModule,
-
+        FormsModule,
+        ReactiveFormsModule,
         //NgbModule.forRoot()
     ],
     bootstrap   : [
